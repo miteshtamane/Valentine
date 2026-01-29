@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #ffebee; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 400px; width: 90%; }
+        h1 { color: #d32f2f; font-size: 24px; }
+        .buttons { margin-top: 20px; }
+        button { background-color: #ff4081; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; margin: 5px; transition: transform 0.2s; }
+        button:hover { transform: scale(1.1); background-color: #f50057; }
+        .hidden { display: none; }
+        .heart { color: #e91e63; font-size: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="step1">
+            <div class="heart">❤️</div>
+            <h1>Hey! Can I ask you a few questions?</h1>
+            <button onclick="nextStep(2)">Yes, of course!</button>
+        </div>
+
+        <div id="step2" class="hidden">
+            <h1>Do you know how much I appreciate every moment with you?</h1>
+            <button onclick="nextStep(3)">I think so...</button>
+        </div>
+
+        <div id="step3" class="hidden">
+            <h1>Are you ready for the best year together yet?</h1>
+            <button onclick="nextStep(4)">YES!</button>
+        </div>
+
+        <div id="step4" class="hidden">
+            <div class="heart">💖</div>
+            <h1>Will you be my Valentine, Shree?</h1>
+            <button onclick="alert('Yay! I can’t wait! ❤️')">YES!</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById('step' + step).classList.remove('hidden');
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
