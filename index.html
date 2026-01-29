@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise</title>
     <title>A Special Surprise that was in the making for a while! (You said that i havent asked you to be your valentine yet, you should trust me and sit back for something)</title>
-    <style>
+<style>
+        body { font-family: 'Arial', sans-serif; background-color: #ffebee; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 400px; width: 90%; }
+        h1 { color: #d32f2f; font-size: 24px; }
+        .buttons { margin-top: 20px; }
+        button { background-color: #ff4081; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; margin: 5px; transition: transform 0.2s; }
+        button:hover { transform: scale(1.1); background-color: #f50057; }
         body { 
             font-family: 'Arial', sans-serif; 
             margin: 0; 
@@ -55,21 +60,48 @@
         }
 
         button:hover { background-color: #f50057; transform: scale(1.05); }
-        .hidden { display: none; }
-    </style>
+.hidden { display: none; }
+        .heart { color: #e91e63; font-size: 50px; }
+</style>
 </head>
+<body>
 <body id="bgBody" style="background-image: url('photo 1.JPG');">
 
     <div class="overlay"></div>
 
-    <div class="card">
+<div class="card">
+        <div id="step1">
+            <div class="heart">❤️</div>
+            <h1>Hey cutu! Can I ask you a few questions?</h1>
+            <button onclick="nextStep(2)">Yes, of course!</button>
+        </div>
+
+        <div id="step2" class="hidden">
+            <h1>Do you know how much I appreciate every moment with you? And I am so greedy that i dont want it to end!!</h1>
+            <button onclick="nextStep(3)">I think so...</button>
+        </div>
+
+        <div id="step3" class="hidden">
+            <h1>Are you ready for our best year yet that's gonna be full of adventures?</h1>
+            <button onclick="nextStep(4)">YES!</button>
+        </div>
+
+        <div id="step4" class="hidden">
+            <div class="heart">💖</div>
+            <h1>Will you please be my forever Valentine, Shree?</h1>
+            <button onclick="alert('Congratulations! You have signed up for endless happiness and love! I can't wait to spend my life with you! I love you, babe❤️')">YES!</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
         <h1 id="typewriterText"></h1>
         
         <div id="btnContainer" class="buttons">
             </div>
-    </div>
+</div>
 
-    <script>
+<script>
+        function nextStep(step) {
+            document.querySelectorAll('.card > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById('step' + step).classList.remove('hidden');
         const content = {
             1: { text: "Hey cutu! Can I ask you a few questions?", btn: "Yes, of course!", img: "photo 1.JPG" },
             2: { text: "Do you know how much I appreciate every moment with you? And I am so greedy that i dont want it to end!!", btn: "I think so...", img: "photo 2.JPG" },
@@ -123,17 +155,23 @@
                     btnContainer.appendChild(noBtn);
                 }
             });
-        }
+}
 
-        function moveButton() {
-            const btn = document.getElementById('noBtn');
+function moveButton() {
+const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
             btn.style.position = 'fixed';
             btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
             btn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-        }
+}
 
         // Start the first step
         window.onload = () => loadStep(1);
-    </script>
+</script>
 </body>
+</html>
 </html>
