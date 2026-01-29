@@ -28,18 +28,27 @@
             z-index: 1;
         }
 
-        .card { 
-            position: absolute; /* Changed to absolute to move it around */
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.85); 
-            padding: 25px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3); 
-            max-width: 450px; 
-            width: 85%; 
-            min-height: 150px;
-            transition: all 0.8s ease-in-out; /* Smooth movement */
-        }
+      .card { 
+    position: absolute;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7); /* Adjust 0.7 to change transparency */
+    
+    /* --- DIMENSION CHANGES --- */
+    width: 100%;             /* Utilizes entire horizontal space */
+    max-width: 100%;        /* Ensures it doesn't cap at a smaller width */
+    min-height: 150px;      /* CHANGE THIS: Increase/Decrease height as needed */
+    left: 0;
+    right: 0;
+    /* ------------------------- */
+
+    border-radius: 0;       /* Removes rounded corners for a full bar look */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+    transition: all 0.8s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
         /* Positioning Classes */
         .pos-bottom { bottom: 10%; top: auto; }
@@ -76,10 +85,10 @@
 
     <script>
         const content = {
-            1: { text: "Hey cutu! Can I ask you a few questions?", btn: "Yes, of course!", img: "photo 1.JPG", position: "pos-bottom" },
+            1: { text: "Hey cutu! Can I ask you a few questions? This is short but i promise this will be fun as i put in efforts to make this!", btn: "Yes, of course! Shoot!", img: "photo 1.JPG", position: "pos-bottom" },
             2: { text: "Do you know how much I appreciate every moment with you? And I am so greedy that i dont want it to end!!", btn: "I think so...", img: "photo 2.JPG", position: "pos-bottom" },
             3: { text: "Are you ready for our best year yet that's gonna be full of adventures?", btn: "YES!", img: "photo 3.JPG", position: "pos-bottom" },
-            4: { text: "Will you please be my forever Valentine, Shree? (Also, you can't say no to me and if you wanna try, be my guest! 😉", btn: "YES!", img: "photo 4.jpeg", position: "pos-top" }
+            4: { text: "Will you please be my forever Valentine, Shree? (Also, you can't say no to me and if you wanna try, be my guest! 😉)", btn: "YES!", img: "photo 4.jpeg", position: "pos-top" }
         };
 
         function typeWriter(text, i, fnCallback) {
